@@ -1,0 +1,7 @@
+welcome: "Welcome to Calculator! Enter your name:"
+valid_name: "Make sure to enter a valid name."
+first_number: "Enter your first number:"
+second_number: "Enter your second number:"
+no_valid_number: "uuhm... that doesn't look like a valid number"
+wrong_operation_choice: "Must choose 1, 2, 3, 4"
+another_calculation?: "Do you want wo perform another calculation? Y to calculate again" 

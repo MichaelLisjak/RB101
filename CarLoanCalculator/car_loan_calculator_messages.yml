@@ -1,0 +1,6 @@
+welcome: "Hello, Welcome to Mortage/ Car Loan Calculator:"
+loan_amount: "Please enter the desired loan amount: "
+apr: "What is the Annual Percentage Rate?"
+loan_duration: "What's the loan duration in years?"
+monthly_payment: "The monthly payment is: "
+invalid_input: "Please enter a valid number"
