@@ -16,7 +16,7 @@ def count_occurrences(some_array)
   no_duplicates = some_array.uniq
   hash_elements = Hash.new
   no_duplicates.each do |element|
-    hash_elements[element] = some_array.count(element)
+    hash_elements[element] = some_array.count(element.upcase)
   end
   hash_elements.each do |element, count|
     puts "#{element} => #{count}"    
@@ -25,7 +25,7 @@ end
 
 vehicles = [
   'car', 'car', 'truck', 'car', 'SUV', 'truck',
-  'motorcycle', 'motorcycle', 'car', 'truck'
+  'motorcycle', 'motorcycle', 'car', 'truck', 'suv'
 ]
 
 
