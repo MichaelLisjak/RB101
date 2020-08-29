@@ -1,0 +1,1 @@
+1.upto(99) {|number| puts number.to_s if number.even?}

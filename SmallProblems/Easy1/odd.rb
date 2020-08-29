@@ -11,7 +11,6 @@ output:
 '''
 
 def is_odd?(number)
-  #number = number.abs
   if number.abs % 2 != 0
     return true
   else
