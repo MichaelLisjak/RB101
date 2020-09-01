@@ -62,10 +62,10 @@ def declare_grand_winner(player, computer, score)
     score[0] += 1
     score[1] += 1
   end
-  if score[0] == 2
+  if score[0] == 3
     promt("You are the grand winner of the match!")
     score = 0
-  elsif score[1] == 2
+  elsif score[1] == 3
     promt("the computer is the grand winner of the match")
     score = 0
   end
@@ -88,7 +88,7 @@ loop do
   display_results(player, computer)
   declare_grand_winner(player, computer, score)
 
-  promt("Do you want to play again?")
+  promt("Do you want to play again? press y for yes")
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
 end
