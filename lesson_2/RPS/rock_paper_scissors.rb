@@ -40,7 +40,7 @@ def beats?(first, second)
       first_wins = true
     end
   end
-  return first_wins
+  first_wins
 end
 
 def display_results(player, computer)
