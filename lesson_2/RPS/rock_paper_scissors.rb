@@ -64,10 +64,12 @@ def declare_grand_winner(player, computer, score)
   end
   if score[0] == 3
     promt("You are the grand winner of the match!")
-    score = 0
+    score[0] = 0
+    score[1] = 0
   elsif score[1] == 3
     promt("the computer is the grand winner of the match")
-    score = 0
+    score[0] = 0
+    score[1] = 0
   end
 end
 # Program logic
@@ -87,6 +89,7 @@ loop do
   display_choice_fully(player, computer)
   display_results(player, computer)
   declare_grand_winner(player, computer, score)
+  p "score variable after method invocation: #{score}"
 
   promt("Do you want to play again? press y for yes")
   answer = gets.chomp
