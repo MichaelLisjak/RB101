@@ -28,3 +28,10 @@ p swap('Abcde') == 'ebcdA'
 p swap('a') == 'a'
 
 #tip: word[word.length - 1] is the same as word[-1]
+#einfachere version um die buchstaben zu tauschen
+'''
+def swap_first_last_characters(word)
+  word[0], word[-1] = word[-1], word[0]
+  word
+end
+'''
