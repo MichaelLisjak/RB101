@@ -24,3 +24,17 @@ p find_fibonacci_index_by_length(10) == 45
 p find_fibonacci_index_by_length(100) == 476
 p find_fibonacci_index_by_length(1000) == 4782
 p find_fibonacci_index_by_length(10000) == 47847
+
+
+'''
+2nd attempt
+
+def find_fibonacci_index_by_length(digits)
+  fibonacci = [1, 1]
+  while fibonacci.last.to_s.length != digits do
+    fibonacci << (fibonacci[-1] + fibonacci[-2])
+  end
+  fibonacci.size
+end
+
+'''
