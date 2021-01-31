@@ -1,6 +1,2 @@
-a = %w(a b b c)
+a = !false
 p a
-p a.object_id
-a = %w(d e f)
-p a 
-p a.object_id
