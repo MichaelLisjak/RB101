@@ -44,9 +44,9 @@ def joinor(arr, delimeter = ', ', last_delimeter = 'or ')
   case arr.size
   when 0 then arr.first.to_s
   when 1 then arr.first.to_s
-  when 2 then arr.first.to_s + " " + last_delimeter + arr.last.to_s
+  when 2 then "#{arr.first}#{last_delimeter}#{arr.last} "
   else
-    arr[0..-2].join(delimeter) + delimeter + last_delimeter + arr[-1].to_s
+    "#{arr[0..-2].join(delimeter)}#{delimeter}#{last_delimeter} #{arr[-1]}"
   end
 end
 
@@ -65,13 +65,13 @@ def player_places_piece!(brd)
   brd[square] = PLAYER_MARKER
 end
 
-def defend_square(brd, mark)
+def attack_defend_square(brd, mark)
   defence_squares = []
   WINNING_LINES.each do |line|
     if brd[line[0]] == mark &&
        brd[line[1]] == mark &&
        brd[line[2]] == INITIAL_MARKER
-    defence_squares << line[2]
+      defence_squares << line[2]
     elsif brd[line[0]] == mark &&
           brd[line[1]] == INITIAL_MARKER &&
           brd[line[2]] == mark
@@ -86,10 +86,10 @@ def defend_square(brd, mark)
 end
 
 def computer_places_piece!(brd)
-  square = if !defend_square(brd, COMPUTER_MARKER).empty?
-             defend_square(brd, COMPUTER_MARKER).sample
-           elsif !defend_square(brd, PLAYER_MARKER).empty?
-             defend_square(brd, PLAYER_MARKER).sample
+  square = if !attack_defend_square(brd, COMPUTER_MARKER).empty?
+             attack_defend_square(brd, COMPUTER_MARKER).sample
+           elsif !attack_defend_square(brd, PLAYER_MARKER).empty?
+             attack_defend_square(brd, PLAYER_MARKER).sample
            elsif brd[5] == ' '
              5
            else
@@ -108,13 +108,9 @@ end
 
 def detect_winner(brd)
   WINNING_LINES.each do |line|
-    if brd[line[0]] == PLAYER_MARKER &&
-       brd[line[1]] == PLAYER_MARKER &&
-       brd[line[2]] == PLAYER_MARKER
+    if brd.values_at(*line).count(PLAYER_MARKER) == 3
       return 'Player'
-    elsif brd[line[0]] == COMPUTER_MARKER &&
-          brd[line[1]] == COMPUTER_MARKER &&
-          brd[line[2]] == COMPUTER_MARKER
+    elsif brd.values_at(*line).count(COMPUTER_MARKER) == 3
       return 'Computer'
     end
   end

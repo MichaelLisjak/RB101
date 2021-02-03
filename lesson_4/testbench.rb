@@ -1,2 +1,2 @@
-a = !false
-p a
+line = [1, 2, 3, 4]
+p line
