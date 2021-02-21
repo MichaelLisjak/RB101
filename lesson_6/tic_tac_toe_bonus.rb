@@ -60,8 +60,9 @@ def player_places_piece!(brd)
     promt "Choose a square (#{joinor(empty_squares(brd))}):"
     square = gets.chomp.to_i
     break if empty_squares(brd).include?(square)
-    promt "Sorry, that'S not a valid choice"
+    promt "Sorry, that's not a valid choice"
   end
+  system 'cls'
   brd[square] = PLAYER_MARKER
 end
 
@@ -95,6 +96,7 @@ def computer_places_piece!(brd)
            else
              empty_squares(brd).sample
            end
+           system 'cls'
   brd[square] = COMPUTER_MARKER
 end
 
@@ -120,17 +122,19 @@ end
 def determine_starting_player(starting_player)
   if starting_player == 'choose'
     loop do
-      promt "Choose if either the 'player' or the 'computer' should start: "
+      promt "Choose if either the player (type 'p') or the computer (type 'c') should start: "
       starting_player = gets.chomp
 
-      if starting_player == 'player' || starting_player == 'computer'
+      if starting_player == 'p' || starting_player == 'c'
         break
       else
         promt "not a valid choice"
       end
     end
   end
-  starting_player
+  if starting_player == 'p' then starting_player = 'player'
+  elsif starting_player == 'c' then starting_player = 'computer'
+  end 
 end
 
 def alternate_player(player)
@@ -154,10 +158,10 @@ end
 score = { "Player" => 0, "Computer" => 0 }
 
 # game-loop
+promt 'Welcome to a game of Tic Tac Toe!'
 loop do
   board = initialize_board
   current_player = determine_starting_player(STARTING_PLAYER)
-
   loop do
     display_board(board)
     place_piece!(board, current_player)
@@ -177,7 +181,7 @@ loop do
     promt "the winner is #{detect_winner(board)}"
     break
   end
-  promt "current score is #{score}"
+  promt "current score is player #{score["Player"]} computer #{score["Computer"]}"
   promt "Play again? (y or n)"
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
